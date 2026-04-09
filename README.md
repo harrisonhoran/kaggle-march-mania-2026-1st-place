@@ -3,30 +3,82 @@
 **Final Score:** 0.1097454 (MSE/Brier, 126 games) | **Rank:** 1st / 3,485 teams
 
 # Context
-Business context: https://www.kaggle.com/competitions/march-machine-learning-mania-2026/overview <br>
-Data context: https://www.kaggle.com/competitions/march-machine-learning-mania-2026/data
+Kaggle Competition: [March Machine Learning Mania 2026](https://www.kaggle.com/competitions/march-machine-learning-mania-2026/overview)
 
-# Reproduction
-Requirements
-Python 3.9+
-numpy, pandas, scikit-learn, scipy
-The pipeline also requires official Kaggle competition data:
+Forecasting the outcomes of both the men's and women's 2026 collegiate basketball tournaments, by submitting predictions for every possible tournament matchup.
 
-pip install kaggle
-kaggle competitions download -c march-machine-learning-mania-2026 -p data/
-cd data && unzip '*.zip' && rm *.zip && cd ..
-Generate Submission
-python3 -c "
-import round52_final as r52
-sub = r52.generate_submission(alpha_m_r1=0.90, alpha_w_r1=0.75)
-sub.to_csv('submission.csv', index=False)
-print(f'Wrote {len(sub)} rows to submission.csv')
-"
-Key parameters for the winning submission:
+| Prizes & Awards | Participation |
+| --- | --- |
+| 1st Place - $10,000<br>2nd Place - $8,000<br>3rd Place - $7,000<br>4th-8th Place - $5,000 | 12,252 Entrants<br>3,767 Participants<br>3,462 Teams<br>3,464 Submissions
 
-File Structure
-external/           — External datasets (Barttorvik, KenPom, EvanMiya, AP Poll, etc.)
-Import chain: round27 → round45 → round46 → round49 → round50 → round51 → round52
+
+---
+
+## Repo Structure
+
+```
+├── march-mania-2026.py                     # Full pipeline: feature engineering → training → submission
+├── kagglewriteup.md                        # Detailed solution writeup
+├── requirements.txt                        # Python dependencies
+├── output/
+│   └── submission_harry_2026.csv           # The exact submission that won
+└── data/
+    ├── march-machine-learning-mania-2026/  # Not included — download from Kaggle (see Setup)
+    └── external/                           # Included in repo
+        ├── college-basketball-injury-report_20260318_all.csv
+        ├── miya_player_bpr_v2.csv
+        └── top_wcbb_players_2025_26.csv
+```
+
+---
+
+## Steps to Reproduce
+
+### 1. Clone
+
+```bash
+git clone https://github.com/harrisonhoran/kaggle-march-mania-2026-1st-place.git
+cd march-mania-2026
+```
+
+### 2. Install dependencies
+
+```bash
+python -m venv .venv
+# Windows
+.venv\Scripts\activate
+# macOS/Linux
+source .venv/bin/activate
+
+pip install -r requirements.txt
+```
+
+### 3. Download data
+
+Download all files from the [competition data page](https://www.kaggle.com/competitions/march-machine-learning-mania-2026/data) into a `data/` directory at the repo root. Required files:
+
+```
+data/
+├── MRegularSeasonDetailedResults.csv
+├── MNCAATourneyCompactResults.csv
+├── MNCAATourneySeeds.csv
+├── MTeams.csv
+├── WRegularSeasonDetailedResults.csv
+├── WNCAATourneyCompactResults.csv
+├── WNCAATourneySeeds.csv
+├── WTeams.csv
+└── SampleSubmissionStage2.csv
+```
+
+### 4. Run
+
+```bash
+mkdir output
+python march-mania-2026.py
+```
+
+Outputs `output/submission.csv`. The script is fully deterministic (`random_state=42`) — re-running produces a bit-for-bit identical submission to the one that placed 2nd.
+
 
 # Philosophy
 - Let the selection committee do the bulk of the work (i.e. trust seeding differential), then consider what they don't account for: continuous ranking of teams rather than strictly ordinal, some injuries (they're vague about how they account for injuries), matchup-specific advantages, etc.
