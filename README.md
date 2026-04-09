@@ -11,7 +11,7 @@ Forecasting the outcomes of both the men's and women's 2026 collegiate basketbal
 | --- | --- |
 | 1st Place - $10,000<br>2nd Place - $8,000<br>3rd Place - $7,000<br>4th-8th Place - $5,000 | 12,252 Entrants<br>3,767 Participants<br>3,462 Teams<br>3,464 Submissions
 
-For the full solution writeup, you can head to the [`kagglewriteup.md`]() file here or follow this [link](https://www.kaggle.com/competitions/march-machine-learning-mania-2026/writeups/march-machine-learning-mania-2026-1st-place-solut) to the Kaggle page.
+For the full solution writeup, you can head to the [`kagglewriteup.md`](https://github.com/harrisonhoran/kaggle-march-mania-2026-1st-place/blob/main/kagglewriteup.md) file here or follow this [link](https://www.kaggle.com/competitions/march-machine-learning-mania-2026/writeups/march-machine-learning-mania-2026-1st-place-solut) to the Kaggle page.
 
 ---
 
