@@ -208,3 +208,6 @@ __marimo__/
 
 # Competition Files - opting for the download strategy instead
 data/march-machine-learning-mania-2026/
+
+# Workspace
+*.code-workspace
