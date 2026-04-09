@@ -39,7 +39,7 @@ For the full solution writeup, you can head to the [`kagglewriteup.md`](https://
 
 ```bash
 git clone https://github.com/harrisonhoran/kaggle-march-mania-2026-1st-place.git
-cd march-mania-2026
+cd kaggle-march-mania-2026-1st-place
 ```
 
 ### 2. Install dependencies
